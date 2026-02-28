@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glam By Inas | إيناس للمكياج الاحترافي - ورقلة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-pink: #e44a91;
+            --brand-black: #0d0d0d;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .hero-section {
+            background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
+                        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .btn-pink {
+            background-color: var(--brand-pink);
+            transition: all 0.3s ease;
+        }
+        .btn-pink:hover {
+            background-color: #c43a7a;
+            transform: translateY(-2px);
+        }
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+        .admin-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Logo Styling */
+        .main-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--brand-black);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .main-logo span {
+            color: var(--brand-pink);
+        }
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--brand-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(228, 74, 145, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-header shadow-sm border-b border-pink-100">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <div class="main-logo serif-font">
+                <div class="logo-icon"><i class="fas fa-magic"></i></div>
+                Glam By <span>Inas</span>
+            </div>
+            
+            <ul class="hidden md:flex space-x-reverse space-x-8 items-center font-medium">
+                <li><a href="#home" class="hover:text-[#e44a91] transition">الرئيسية</a></li>
+                <li><a href="#portfolio" class="hover:text-[#e44a91] transition">أعمالي</a></li>
+                <li><a href="#about" class="hover:text-[#e44a91] transition">عني</a></li>
+                <li><a href="#contact" class="hover:text-[#e44a91] transition">اتصلي بي</a></li>
+                <li><button onclick="openAdmin()" class="bg-gray-100 text-gray-600 px-4 py-1.5 rounded-full text-sm hover:bg-pink-100 hover:text-pink-600 transition flex items-center gap-2">
+                    <i class="fas fa-plus-circle"></i> إضافة عمل
+                </button></li>
+                <li><a href="tel:0698946153" class="btn-pink text-white px-6 py-2 rounded-full shadow-md">0698946153</a></li>
+            </ul>
+
+            <button class="md:hidden text-[#e44a91]" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-pink-100 p-4 space-y-3 text-center">
+            <a href="#home" class="block py-2">الرئيسية</a>
+            <a href="#portfolio" class="block py-2">أعمالي</a>
+            <a href="#about" class="block py-2">عني</a>
+            <a href="tel:0698946153" class="block py-2 text-[#e44a91] font-bold">0698946153</a>
+            <button onclick="openAdmin()" class="block w-full py-2 text-gray-500">إضافة عمل جديد</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section h-screen flex items-center justify-center text-center px-6 pt-20">
+        <div class="max-w-4xl bg-white/40 p-10 rounded-[3rem] backdrop-blur-md border border-white/60 shadow-2xl">
+            <div class="mb-6 flex justify-center">
+                <div class="w-20 h-20 bg-black rounded-full flex items-center justify-center text-white text-3xl shadow-xl">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <h1 class="text-6xl md:text-8xl mb-4 serif-font text-black font-bold">Glam By <span class="text-[#e44a91]">Inas</span></h1>
+            <p class="text-xl md:text-3xl mb-10 font-light text-gray-900 italic tracking-wide">نبرز جمالكِ الحقيقي بلمسات ورقيّ ورقلة</p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="#portfolio" class="btn-pink text-white px-12 py-4 rounded-full text-lg font-bold shadow-xl">شاهدي الكتالوج</a>
+                <a href="#contact" class="bg-black text-white px-12 py-4 rounded-full text-lg font-bold hover:bg-gray-800 transition shadow-xl">تواصل مباشر</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold serif-font mb-4">معرض الإبداع</h2>
+                <p class="text-gray-500 max-w-lg mx-auto">استعرضي أحدث اللمسات الفنية التي قمت بتنفيذها لعميلاتي في ورقلة</p>
+                <div class="h-1 w-24 bg-brand-pink mx-auto mt-6"></div>
+            </div>
+            
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Static Placeholders -->
+                <div class="portfolio-item group relative h-[500px] overflow-hidden rounded-[2rem] shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1522338221030-db26e7275ff7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity flex flex-col justify-end p-8">
+                        <h4 class="text-white text-2xl font-bold">مكياج عروس ملكي</h4>
+                        <p class="text-pink-300">Glam By Inas Signature</p>
+                    </div>
+                </div>
+                <div class="portfolio-item group relative h-[500px] overflow-hidden rounded-[2rem] shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110">
+                    <div class="overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity flex flex-col justify-end p-8">
+                        <h4 class="text-white text-2xl font-bold">إطلالة سهرات ناعمة</h4>
+                        <p class="text-pink-300">Soft & Elegant</p>
+                    </div>
+                </div>
+                <!-- Add Project Trigger -->
+                <div onclick="openAdmin()" class="h-[500px] border-4 border-dashed border-pink-100 rounded-[2rem] flex flex-col items-center justify-center text-pink-300 hover:bg-pink-50 transition cursor-pointer group">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-plus text-3xl text-pink-500"></i>
+                    </div>
+                    <span class="text-xl font-bold">إضافة عمل جديد</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section id="about" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-pink-200 rounded-full blur-3xl opacity-50"></div>
+                    <img src="https://images.unsplash.com/photo-1595475884562-073c30d45670?auto=format&fit=crop&w=800&q=80" class="relative z-10 rounded-[3rem] shadow-2xl border-8 border-white">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <span class="text-pink-600 font-bold tracking-widest uppercase text-sm">Glam By Inas</span>
+                    <h2 class="text-5xl font-bold serif-font my-6 text-black">خبيرة الجمال في قلب ورقلة</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-10">
+                        أنا إيناس، ميكب آرتيست شغوفة بكل تفاصيل الجمال. أعمل في مدينة ورقلة العريقة، وأسعى دائماً لتحويل كل جلسة مكياج إلى تجربة فريدة تشعر فيها المرأة بأنها ملكة. مكاني هو ملاذكِ للأناقة والتميز.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-sm">
+                            <i class="fas fa-map-marked-alt text-3xl text-pink-500"></i>
+                            <div>
+                                <h5 class="font-bold">العنوان</h5>
+                                <p class="text-sm text-gray-500">سعيد عتبة 3، ورقلة</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white p-6 rounded-2xl shadow-sm">
+                            <i class="fas fa-id-card text-3xl text-pink-500"></i>
+                            <div>
+                                <h5 class="font-bold">الحجز</h5>
+                                <p class="text-sm text-gray-500">0698946153</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Links -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold serif-font mb-16">اتصلي بـ Glam By Inas</h2>
+            <div class="flex flex-wrap justify-center gap-10">
+                <a href="https://www.instagram.com/glam_by_inas?igsh=M2RkenJwbHdieGk=" target="_blank" class="group">
+                    <div class="w-24 h-24 bg-gradient-to-tr from-yellow-400 via-pink-600 to-purple-600 rounded-full flex items-center justify-center text-white text-4xl shadow-lg group-hover:scale-110 transition mb-4">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span class="font-bold">إنستغرام</span>
+                </a>
+                <a href="https://www.facebook.com/share/1CqDAimFXA/?mibextid=wwXIfr" target="_blank" class="group">
+                    <div class="w-24 h-24 bg-[#1877F2] rounded-full flex items-center justify-center text-white text-4xl shadow-lg group-hover:scale-110 transition mb-4">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <span class="font-bold">فيسبوك</span>
+                </a>
+                <a href="tel:0698946153" class="group">
+                    <div class="w-24 h-24 bg-black rounded-full flex items-center justify-center text-white text-4xl shadow-lg group-hover:scale-110 transition mb-4">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <span class="font-bold">اتصال هاتف</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="main-logo serif-font justify-center mb-8 text-3xl">
+                <div class="logo-icon"><i class="fas fa-magic"></i></div>
+                Glam By <span class="text-[#e44a91]">Inas</span>
+            </div>
+            <p class="text-gray-500 max-w-md mx-auto mb-10">ورقلة، سعيد عتبة 3 - أمام مسجد مصعب بن عمير</p>
+            <div class="h-[1px] w-full bg-gray-800 mb-10"></div>
+            <p class="text-sm text-gray-600 italic">تصميم احترافي لـ Glam By Inas © 2024</p>
+        </div>
+    </footer>
+
+    <!-- Admin Modal -->
+    <div id="admin-modal" class="admin-modal p-6">
+        <div class="bg-white rounded-[2.5rem] p-10 max-w-lg w-full shadow-2xl border-4 border-pink-50">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold">إضافة عمل جديد</h3>
+                <button onclick="closeAdmin()" class="text-gray-400 text-3xl hover:text-black">&times;</button>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold mb-2">رابط الصورة (Direct URL)</label>
+                    <input type="text" id="work-url" placeholder="انسخي رابط الصورة هنا..." class="w-full p-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-pink-400 transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2">اسم اللوك</label>
+                    <input type="text" id="work-desc" placeholder="مثلاً: ميكب خطوبة ناعم" class="w-full p-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-pink-400 transition">
+                </div>
+                <button onclick="submitWork()" class="w-full btn-pink text-white font-bold py-5 rounded-2xl shadow-xl mt-4 text-lg">تحديث المعرض فوراً</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function openAdmin() {
+            document.getElementById('admin-modal').style.display = 'flex';
+        }
+
+        function closeAdmin() {
+            document.getElementById('admin-modal').style.display = 'none';
+        }
+
+        function submitWork() {
+            const url = document.getElementById('work-url').value;
+            const desc = document.getElementById('work-desc').value || 'New Look';
+
+            if (!url) {
+                alert('يرجى وضع رابط الصورة');
+                return;
+            }
+
+            const grid = document.getElementById('gallery-grid');
+            const newItem = document.createElement('div');
+            newItem.className = 'portfolio-item group relative h-[500px] overflow-hidden rounded-[2rem] shadow-xl';
+            newItem.innerHTML = `
+                <img src="${url}" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" onerror="this.src='https://via.placeholder.com/800x1200?text=Image+Not+Found'">
+                <div class="overlay absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity flex flex-col justify-end p-8">
+                    <h4 class="text-white text-2xl font-bold">${desc}</h4>
+                    <p class="text-pink-300">Glam By Inas New Work</p>
+                </div>
+            `;
+            
+            grid.insertBefore(newItem, grid.firstChild);
+            document.getElementById('work-url').value = '';
+            document.getElementById('work-desc').value = '';
+            closeAdmin();
+            document.getElementById('portfolio').scrollIntoView();
+        }
+
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('admin-modal')) closeAdmin();
+        }
+    </script>
+</body>
+</html>
